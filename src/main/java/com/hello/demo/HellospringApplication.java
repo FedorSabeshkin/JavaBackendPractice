@@ -1,6 +1,7 @@
 package com.hello.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -8,14 +9,17 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class HellospringApplication {
 
 
-    Animal animal;
-    public void useImplementation(){
+    private Animal animal;
+
+    public void useImplementation() {
         animal.voice();
     }
 
-    public HellospringApplication() {
-        useImplementation();
+    @Autowired
+    public HellospringApplication(@Qualifier("Dog") Animal animal) {
+        this.animal = animal;
     }
+
 
     public static void main(String[] args) {
 
