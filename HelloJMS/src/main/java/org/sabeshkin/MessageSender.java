@@ -2,7 +2,7 @@ package org.sabeshkin;
 
 import javax.jms.*;
 
-public class MessageSender implements AutoCloseable {
+public class MessageSender {
 
     private Connection connection;
     private MessageProducer producer;
@@ -18,7 +18,10 @@ public class MessageSender implements AutoCloseable {
     }
 
     public void sendMessage(String message) throws JMSException {
-        System.out.println("Send message");
+        System.out.printf("Send message: %s%n",
+                message);
+        System.out.printf("Send thread: %s%n",
+                Thread.currentThread().getName());
         TextMessage textMessage = session.createTextMessage(message);
         producer.send(textMessage);
     }

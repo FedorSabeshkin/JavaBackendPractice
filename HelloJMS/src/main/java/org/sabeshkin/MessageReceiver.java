@@ -3,12 +3,12 @@ package org.sabeshkin;
 import javax.jms.*;
 
 
-public class MessageReceiver implements MessageListener, AutoCloseable {
+public class MessageReceiver implements MessageListener {
 
     private Connection connection;
     private MessageConsumer consumer;
 
-    public MessageReceiver() throws JMSException {
+    public void startListener() throws JMSException {
         ConnectionFactory connectionFactory = JmsProvider.getConnectionFactory();
         this.connection = connectionFactory.createConnection();
         connection.start();
@@ -18,12 +18,19 @@ public class MessageReceiver implements MessageListener, AutoCloseable {
         consumer.setMessageListener(this);
     }
 
+
     @Override
     public void onMessage(Message message) {
-        try {
-            System.out.println(message.getStringProperty("text"));
-        } catch (JMSException e) {
-            e.printStackTrace();
+        if (message instanceof TextMessage) {
+            TextMessage tm = (TextMessage) message;
+            try {
+                System.out.printf("Receive message: %s%n",
+                        tm.getText());
+                System.out.printf("Receive thread: %s%n",
+                        Thread.currentThread().getName());
+            } catch (JMSException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 
