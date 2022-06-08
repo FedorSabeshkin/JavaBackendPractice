@@ -21,6 +21,8 @@ class HellospringApplicationTests {
     void givenInScopeComponents_whenSearchingInApplicationContext_thenFindThem() {
         assertNotNull(applicationContext.getBean(Cat.class));
         assertNotNull(applicationContext.getBean(Dog.class));
+        Animal animal = applicationContext.getBean(Dog.class);
+        animal.voice();
     }
 
 
