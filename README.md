@@ -7,3 +7,4 @@
 3. [Реализация паттерна DAO](https://github.com/FedorSabeshkin/SpringPractice/tree/5841c8bf651b92d0af48bd8e75dc8c74fb92a4bb)
 4. [Введение в JMS](https://github.com/FedorSabeshkin/SpringPractice/tree/61e55ec3b0933e5926bcb632ab17eb77e474b2cf)
 5. [Spring Integration](https://github.com/FedorSabeshkin/SpringPractice/tree/6d6f90e6499ac4bf79c510ca638db745f65cf0a8)
+6. [WebFlux](https://github.com/FedorSabeshkin/SpringPractice/tree/39d86f64bd29ad6141ae0c1b846bcf1f05d4781d)
